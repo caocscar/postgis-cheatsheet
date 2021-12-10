@@ -28,3 +28,15 @@ FROM geometries;
 - http://postgis.net/workshops/postgis-intro/geometries.html
 - http://postgis.net/workshops/postgis-intro/geography.html
 - https://postgis.net/docs/using_postgis_dbmanagement.html#Geography_Basics
+
+## Convert columns of latitude, longitude to geometry type
+add empty geography column
+```SQL
+ALTER TABLE your_table 
+ADD COLUMN geom geography(Point, 4326);
+```
+then do an update by using `ST_MakePoint` and `ST_SetSRID`
+```SQL
+UPDATE your_table 
+SET geom = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326);
+```
