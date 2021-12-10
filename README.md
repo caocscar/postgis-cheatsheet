@@ -40,3 +40,31 @@ then do an update by using `ST_MakePoint` and `ST_SetSRID`
 UPDATE your_table 
 SET geom = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326);
 ```
+
+## Find closest point (between two set of points)
+Use `ST_ClosestPoint` 
+```SQL
+SELECT ST_AsText(geog_origin)
+    ,B.stop_id
+    ,B.stop_name AS pickup_location
+FROM via_ride_requests_raw AS A
+CROSS JOIN LATERAL (
+  SELECT stop_id
+    ,stop_name
+  FROM ods_stops
+  ORDER BY ST_Transform(location, 4326) <-> A.geog_origin
+  LIMIT  1
+) AS B;
+```
+## Find out current SRID
+```SQL
+SELECT ST_SRID(geom) 
+FROM nyc_streets
+LIMIT 1;
+```
+
+## Transform geometry into another SRID
+```SQL
+SELECT ST_Transform(geom, SRID)
+FROM nyc_streets
+```
