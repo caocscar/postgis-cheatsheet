@@ -29,6 +29,17 @@ FROM geometries;
 - http://postgis.net/workshops/postgis-intro/geography.html
 - https://postgis.net/docs/using_postgis_dbmanagement.html#Geography_Basics
 
+## Insert and store geometry data (4326) into a different CRS
+These two inserts are equivalent in terms of result.
+```SQL
+CREATE TABLE test (
+  geom geometry(Point, 3857)
+);
+INSERT INTO test VALUES
+(ST_Transform('SRID=4326;POINT(-83.7 42.3)'::geometry, 3857)),
+(ST_Transform(ST_SetSRID('POINT(-83.7 42.3)'::geometry, 4326), 3857));
+```
+
 ## Convert columns of latitude, longitude to geometry type
 add empty geography column
 ```SQL
