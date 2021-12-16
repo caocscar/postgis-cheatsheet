@@ -1,4 +1,16 @@
-# POSTGIS Cheat Sheet
+# POSTGIS Cheat Sheet <!-- omit in toc -->
+
+- [Create table with geometry (geography) column](#create-table-with-geometry-geography-column)
+- [Insert Point(LNG, LAT) geometry data](#insert-pointlng-lat-geometry-data)
+- [Query geometry data and print out as text](#query-geometry-data-and-print-out-as-text)
+- [References](#references)
+- [Insert and store geometry data (4326) into a different CRS](#insert-and-store-geometry-data-4326-into-a-different-crs)
+- [Convert columns of latitude, longitude to geometry type](#convert-columns-of-latitude-longitude-to-geometry-type)
+- [Find closest point (between two set of points)](#find-closest-point-between-two-set-of-points)
+- [Find closest line to point](#find-closest-line-to-point)
+- [Find out current SRID](#find-out-current-srid)
+- [Transform geometry into another SRID](#transform-geometry-into-another-srid)
+- [Setup PostGIS on AWS RDS Postgres](#setup-postgis-on-aws-rds-postgres)
 
 ## Create table with geometry (geography) column
 ```SQL
