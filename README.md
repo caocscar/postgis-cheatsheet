@@ -98,6 +98,24 @@ SELECT ST_Transform(geom, SRID)
 FROM nyc_streets
 ```
 
+## Return GeoJSON FeatureCollection from table
+```SQL
+SELECT json_build_object(
+    'type', 'FeatureCollection',
+    'features', json_agg(
+        json_build_object(
+            'type', 'Feature',
+            'geometry', ST_AsGeoJSON(geometry)::json,
+            'properties', json_build_object(
+                'stop_id', stop_id
+                'stop_name', stop_name,
+            )
+        )
+    )
+)
+FROM nyc_streets;
+```
+
 ## Setup PostGIS on AWS RDS Postgres
 Reference: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.PostGIS.html
 
