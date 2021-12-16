@@ -84,6 +84,12 @@ CROSS JOIN LATERAL (
 ```SQL
 ```
 
+## Extract Lng, Lat from Point
+```SQL
+SELECT ST_X(geom)
+    ST_Y(geom)
+FROM nyc_streets
+```
 
 ## Find out current SRID
 ```SQL
