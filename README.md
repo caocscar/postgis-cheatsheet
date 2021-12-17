@@ -219,3 +219,16 @@ FROM normalize_address('915 E Washington St, Ann Arbor, MI 48109') AS na;
 -- test topology
 SELECT topology.createtopology('my_new_topo', 26986, 0.5);
 ```
+
+List current postgis version
+```SQL
+SELECT PostGIS_Version();
+SELECT PostGIS_Full_Version();
+```
+
+List available postgis versions
+```SQL
+SELECT *
+FROM pg_available_extension_versions
+WHERE name='postgis'
+```
