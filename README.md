@@ -89,15 +89,15 @@ SELECT A.edge
 	,B.segment_id
 	,B.st_name
 	,B.manual_only
-	,ST_Distance(A.geog, B.geog, false)::NUMERIC(8,3) AS distance
+	,B.distance
 FROM production_edges AS A
 CROSS JOIN LATERAL (
 	SELECT segment_id
 		,st_name
 		,manual_only
-		,geog
+		,geog <-> A.geog AS distance 
 	FROM ods_route
-	ORDER BY geog <-> A.geog DESC
+	ORDER BY distance
 	LIMIT 1
 ) AS B;
 ```
