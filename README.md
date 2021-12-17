@@ -122,6 +122,20 @@ SELECT json_build_object(
 FROM nyc_streets;
 ```
 
+## Insert from GeoJSON feature
+Point
+```SQL
+```
+
+Linestring
+```SQL
+INSERT INTO ods_route 
+VALUES ('GR','171','BRIDGE ST NW','false', ST_GeomFromGeoJSON('{"type": "LineString", "coordinates": [[-85.67919, 42.97059], [-85.67893, 42.97059]]}'))
+```
+
+Polygon
+```SQL
+```
 ## Setup PostGIS on AWS RDS Postgres
 Reference: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.PostGIS.html
 
