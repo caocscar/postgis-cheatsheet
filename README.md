@@ -77,11 +77,29 @@ CROSS JOIN LATERAL (
   FROM ods_stops
   ORDER BY ST_Transform(location, 4326) <-> A.geog_origin
   LIMIT  1
-) AS B;
+) AS B;	
 ```
 
 ## Find closest line to point
+A is the point table and B is the linestring table. If tables were reversed, it would find the closest point to the line.
 ```SQL
+SELECT A.edge
+	,A.lat
+	,A.lng
+	,B.segment_id
+	,B.st_name
+	,B.manual_only
+	,ST_Distance(A.geog, B.geog, false)::NUMERIC(8,3) AS distance
+FROM production_edges AS A
+CROSS JOIN LATERAL (
+	SELECT segment_id
+		,st_name
+		,manual_only
+		,geog
+	FROM ods_route
+	ORDER BY geog <-> A.geog DESC
+	LIMIT 1
+) AS B;
 ```
 
 ## Extract Lng, Lat from Point
