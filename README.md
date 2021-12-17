@@ -3,13 +3,17 @@
 - [Create table with geometry (geography) column](#create-table-with-geometry-geography-column)
 - [Insert Point(LNG, LAT) geometry data](#insert-pointlng-lat-geometry-data)
 - [Query geometry data and print out as text](#query-geometry-data-and-print-out-as-text)
+- [Create spatial index](#create-spatial-index)
 - [References](#references)
 - [Insert and store geometry data (4326) into a different CRS](#insert-and-store-geometry-data-4326-into-a-different-crs)
 - [Convert columns of latitude, longitude to geometry type](#convert-columns-of-latitude-longitude-to-geometry-type)
 - [Find closest point (between two set of points)](#find-closest-point-between-two-set-of-points)
 - [Find closest line to point](#find-closest-line-to-point)
+- [Extract Lng, Lat from Point](#extract-lng-lat-from-point)
 - [Find out current SRID](#find-out-current-srid)
 - [Transform geometry into another SRID](#transform-geometry-into-another-srid)
+- [Return GeoJSON FeatureCollection from table](#return-geojson-featurecollection-from-table)
+- [Insert from GeoJSON feature](#insert-from-geojson-feature)
 - [Setup PostGIS on AWS RDS Postgres](#setup-postgis-on-aws-rds-postgres)
 
 ## Create table with geometry (geography) column
