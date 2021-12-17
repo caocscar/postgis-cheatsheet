@@ -36,6 +36,11 @@ SELECT name
 FROM geometries;
 ```
 
+## Create spatial index
+```SQL
+CREATE INDEX <index-name> ON <table> USING gist (geog);
+```
+
 ## References
 - http://postgis.net/workshops/postgis-intro/geometries.html
 - http://postgis.net/workshops/postgis-intro/geography.html
@@ -65,19 +70,19 @@ SET geom = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326);
 ```
 
 ## Find closest point (between two set of points)
-Use `ST_ClosestPoint` 
 ```SQL
 SELECT ST_AsText(geog_origin)
     ,B.stop_id
     ,B.stop_name AS pickup_location
 FROM via_ride_requests_raw AS A
 CROSS JOIN LATERAL (
-  SELECT stop_id
-    ,stop_name
-  FROM ods_stops
-  ORDER BY ST_Transform(location, 4326) <-> A.geog_origin
-  LIMIT  1
-) AS B;	
+	SELECT stop_id
+		,stop_name
+		,geog <-> A.geog_origin AS distance
+	FROM ods_stops
+	ORDER BY distance
+	LIMIT 1
+) AS B
 ```
 
 ## Find closest line to point
@@ -99,7 +104,7 @@ CROSS JOIN LATERAL (
 	FROM ods_route
 	ORDER BY distance
 	LIMIT 1
-) AS B;
+) AS B
 ```
 
 ## Extract Lng, Lat from Point
