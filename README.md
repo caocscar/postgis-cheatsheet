@@ -140,8 +140,8 @@ SELECT json_build_object(
             'type', 'Feature',
             'geometry', ST_AsGeoJSON(geometry)::json,
             'properties', json_build_object(
-                'stop_id', stop_id
-                'stop_name', stop_name,
+                'stop_id', stop_id,
+                'stop_name', stop_name
             )
         )
     )
