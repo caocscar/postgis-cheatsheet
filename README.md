@@ -1,7 +1,7 @@
 # POSTGIS Cheat Sheet <!-- omit in toc -->
 
 - [Create table with geometry (geography) column](#create-table-with-geometry-geography-column)
-- [Insert Point(LNG, LAT) geometry data](#insert-pointlng-lat-geometry-data)
+- [Insert geometry data of various kinds](#insert-geometry-data-of-various-kinds)
 - [Query geometry data and print out as text](#query-geometry-data-and-print-out-as-text)
 - [Create spatial index](#create-spatial-index)
 - [References](#references)
