@@ -23,7 +23,7 @@ CREATE TABLE geometries (
   geom geometry
 )
 ```
-## Insert Point(LNG, LAT) geometry data
+## Insert geometry data of various kinds
 ```SQL
 INSERT INTO geometries VALUES
   ('Point', 'POINT(0 0)'),
