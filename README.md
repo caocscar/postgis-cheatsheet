@@ -1,5 +1,6 @@
 # POSTGIS Cheat Sheet <!-- omit in toc -->
 
+- [When to use `geometry` vs `geography` data type](#when-to-use-geometry-vs-geography-data-type)
 - [Create table with geometry (geography) column](#create-table-with-geometry-geography-column)
 - [Insert geometry data of various kinds](#insert-geometry-data-of-various-kinds)
 - [Query geometry data and print out as text](#query-geometry-data-and-print-out-as-text)
@@ -15,6 +16,9 @@
 - [Return GeoJSON FeatureCollection from table](#return-geojson-featurecollection-from-table)
 - [Insert from GeoJSON feature](#insert-from-geojson-feature)
 - [Setup PostGIS on AWS RDS Postgres](#setup-postgis-on-aws-rds-postgres)
+
+## When to use `geometry` vs `geography` data type
+http://postgis.net/workshops/postgis-intro/geography.html#why-not-use-geography
 
 ## Create table with geometry (geography) column
 ```SQL
